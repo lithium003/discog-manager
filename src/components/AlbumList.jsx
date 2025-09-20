@@ -1,4 +1,5 @@
 import { Album } from "./Album";
+import { AddAlbum } from "./AddAlbum";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
@@ -22,6 +23,9 @@ export const AlbumList = () => {
             <Album src={src} />
           </Col>
         ))}
+        <Col xs={12} sm={6} md={4} lg={3}>
+          <AddAlbum />
+        </Col>
       </Row>
     </Container>
   );

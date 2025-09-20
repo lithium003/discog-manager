@@ -2,6 +2,7 @@ import { PlusLg } from "react-bootstrap-icons";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
 
 export const AddAlbum = () => {
   const addAlbum = () => {
@@ -9,9 +10,20 @@ export const AddAlbum = () => {
   };
 
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [albumName, setAlbumName] = useState("");
+  const [artistName, setArtistName] = useState("");
+  const [releaseYear, setReleaseYear] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    alert(
+      `Form submitted: ${JSON.stringify({ albumName, artistName, releaseYear })}`
+    );
+    handleClose();
+  };
 
   return (
     <>
@@ -73,6 +85,34 @@ export const AddAlbum = () => {
         <Modal.Body>
           I will not close if you click outside me. Do not even try to press
           escape key.
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="example.Form.ControlInput1">
+              <Form.Label>Album Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter album name"
+                value={albumName}
+                onChange={(e) => setAlbumName(e.target.value)}
+              />
+              <Form.Label>Album Artist Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter album artist name"
+                value={artistName}
+                onChange={(e) => setArtistName(e.target.value)}
+              />
+              <Form.Label>Album Release Year</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter album release year"
+                value={releaseYear}
+                onChange={(e) => setReleaseYear(e.target.value)}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Add Album
+            </Button>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

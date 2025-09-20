@@ -1,10 +1,11 @@
 import { createRoot } from "react-dom/client";
-import { Profile } from "./components/Profile";
+import { AlbumList } from "./components/AlbumList";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
     <>
-      <Profile />
+      <AlbumList />
     </>
   );
 };
